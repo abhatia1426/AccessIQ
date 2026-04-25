@@ -1,0 +1,23 @@
+email,full_name,department,job_title,employee_type,app_name,role_name,permission_name,permission_risk_level
+sarah.chen@acme.com,Sarah Chen,Finance,Senior Accountant,employee,SAP ERP,Finance Analyst,view_invoices,1
+sarah.chen@acme.com,Sarah Chen,Finance,Senior Accountant,employee,SAP ERP,Finance Analyst,create_purchase_order,2
+sarah.chen@acme.com,Sarah Chen,Finance,Senior Accountant,employee,SAP ERP,Payment Approver,approve_payment,3
+sarah.chen@acme.com,Sarah Chen,Finance,Senior Accountant,employee,SAP ERP,Payment Approver,execute_wire_transfer,4
+james.park@acme.com,James Park,Finance,Accounts Payable,employee,SAP ERP,Finance Analyst,view_invoices,1
+james.park@acme.com,James Park,Finance,Accounts Payable,employee,SAP ERP,Finance Analyst,create_purchase_order,2
+mike.torres@acme.com,Mike Torres,Finance,CFO,employee,SAP ERP,Finance Analyst,view_invoices,1
+mike.torres@acme.com,Mike Torres,Finance,CFO,employee,SAP ERP,Payment Approver,approve_payment,3
+mike.torres@acme.com,Mike Torres,Finance,CFO,employee,SAP ERP,Finance Admin,view_salary_data,3
+mike.torres@acme.com,Mike Torres,Finance,CFO,employee,SAP ERP,Finance Admin,edit_salary_data,4
+alice.nguyen@acme.com,Alice Nguyen,Engineering,Software Engineer,employee,GitHub,Developer,push_to_main,2
+alice.nguyen@acme.com,Alice Nguyen,Engineering,Software Engineer,employee,GitHub,Developer,create_branch,1
+alice.nguyen@acme.com,Alice Nguyen,Engineering,Software Engineer,employee,GitHub,Admin,delete_repository,4
+alice.nguyen@acme.com,Alice Nguyen,Engineering,Software Engineer,employee,GitHub,Admin,manage_org_members,3
+bob.smith@acme.com,Bob Smith,Engineering,Software Engineer,employee,GitHub,Developer,push_to_main,2
+bob.smith@acme.com,Bob Smith,Engineering,Software Engineer,employee,GitHub,Developer,create_branch,1
+carol.white@acme.com,Carol White,HR,HR Manager,employee,Workday,HR Analyst,view_employee_records,2
+carol.white@acme.com,Carol White,HR,HR Manager,employee,Workday,HR Analyst,edit_employee_records,3
+carol.white@acme.com,Carol White,HR,HR Manager,employee,Workday,Payroll Admin,run_payroll,4
+carol.white@acme.com,Carol White,HR,HR Manager,employee,Workday,Payroll Admin,edit_payroll_data,4
+dan.lee@acme.com,Dan Lee,HR,HR Coordinator,employee,Workday,HR Analyst,view_employee_records,2
+dan.lee@acme.com,Dan Lee,HR,HR Coordinator,employee,Workday,HR Analyst,edit_employee_records,3
