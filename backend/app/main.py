@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import get_settings
-from app.api.routes import ingest, users
+from app.api.routes import ingest, users, scans
 
 settings = get_settings()
 
@@ -21,6 +21,7 @@ app.add_middleware(
 
 app.include_router(ingest.router, prefix="/api/v1")
 app.include_router(users.router, prefix="/api/v1")
+app.include_router(scans.router, prefix="/api/v1")
 
 @app.get("/health")
 async def health():

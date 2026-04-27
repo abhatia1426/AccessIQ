@@ -19,7 +19,7 @@ async def upload_identity_csv(
     result = await db.execute(
         select(Organization).where(Organization.slug == org_slug)
     )
-    org = result.scalars_one_or_none()
+    org = result.scalar_one_or_none()
     if not org:
         raise HTTPException(status_code=404, detail=f"Org '{org_slug}' not found")
 

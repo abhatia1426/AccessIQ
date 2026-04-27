@@ -37,8 +37,8 @@ async def ingest_csv (
     df = df.where(pd.notna(df), None)
 
     stats = {
-        "users_creted": 0,
-        "users_updates": 0,
+        "users_created": 0,
+        "users_updated": 0,
         "roles_created": 0,
         "permissions_created": 0,
         "assignments_created": 0,
@@ -56,7 +56,7 @@ async def ingest_csv (
             result = await db.execute (
                 select(Application).where (
                     Application.org_id == org_id,
-                    Application.name == name_id
+                    Application.name == app_name
                 )
             )
             app = result.scalar_one_or_none()
@@ -64,7 +64,7 @@ async def ingest_csv (
                 app = Application(org_id=org_id, name=app_name)
                 db.add(app)
                 await db.flush()
-            app,cache[app_name] = app
+            app_cache[app_name] = app
         app = app_cache[app_name]
 
 
@@ -78,7 +78,7 @@ async def ingest_csv (
                     Permission.name == perm_name
                 )
             )
-            persm = result.scalar_one_or_none()
+            perm = result.scalar_one_or_none()
             if not perm:
                 risk = int(row.get("permission_risk_level") or 1)
                 risk = max(1, min(4, risk))
@@ -153,7 +153,7 @@ async def ingest_csv (
                 user.full_name = str(row["full_name"]).strip()
                 user.department = row.get("department")
                 user.job_title = row.get("job_title")
-                stats["users_updates"] += 1
+                stats["users_updated"] += 1
             user_cache[email] = user
         user = user_cache[email]
 
