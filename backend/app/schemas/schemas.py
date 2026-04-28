@@ -67,7 +67,7 @@ class ScanOut(BaseModel):
     id: str
     status: str
     users_scanned: Optional[int]
-    violtions_found: Optional[int]
+    violations_found: Optional[int]
     started_at: datetime
     completed_at: Optional[datetime]
 
