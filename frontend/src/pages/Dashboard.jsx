@@ -66,18 +66,33 @@ export default function Dashboard({ orgSlug }) {
                 <th style={{ textAlign: 'left', padding: '10px 16px', fontWeight: '500', color: 'var(--color-text-secondary)', fontSize: '12px' }}>Department</th>
                 <th style={{ textAlign: 'left', padding: '10px 16px', fontWeight: '500', color: 'var(--color-text-secondary)', fontSize: '12px' }}>Job title</th>
                 <th style={{ textAlign: 'left', padding: '10px 16px', fontWeight: '500', color: 'var(--color-text-secondary)', fontSize: '12px' }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '10px 16px', fontWeight: '500', color: 'var(--color-text-secondary)', fontSize: '12px' }}>Violations</th>
+                <th style={{ textAlign: 'left', padding: '10px 16px', fontWeight: '500', color: 'var(--color-text-secondary)', fontSize: '12px' }}>Risk score</th>
+                <th style={{ textAlign: 'left', padding: '10px 16px', fontWeight: '500', color: 'var(--color-text-secondary)', fontSize: '12px' }}>Risk label</th>
                 </tr>
             </thead>
             <tbody>
                 {users.map((user) => (
-                <tr key={user.id} style={{ borderBottom: '0.5px solid var(--color-border-tertiary)' }}>
-                    <td style={{ padding: '10px 16px' }}>{user.full_name}</td>
+                    <tr key={user.id} style={{ borderBottom: '0.5px solid var(--color-border-tertiary)' }}>
+                    <td style={{ padding: '10px 16px', fontWeight: '500' }}>{user.full_name}</td>
                     <td style={{ padding: '10px 16px', color: 'var(--color-text-secondary)' }}>{user.department}</td>
                     <td style={{ padding: '10px 16px', color: 'var(--color-text-secondary)' }}>{user.job_title}</td>
-                    <td style={{ padding: '10px 16px', color: 'var(--color-text-secondary)' }}>{user.employee_type}</td>
-                </tr>
+                    <td style={{ padding: '10px 16px' }}>{user.sod_violation_count ?? 0}</td>
+                    <td style={{ padding: '10px 16px' }}>{user.overall_score?.toFixed(0) ?? '—'}</td>
+                    <td style={{ padding: '10px 16px' }}>
+                        {user.risk_label ? (
+                        <span style={{
+                            fontSize: '11px', padding: '3px 8px', borderRadius: '6px',
+                            background: riskColor(user.risk_label).bg,
+                            color: riskColor(user.risk_label).text,
+                        }}>
+                            {user.risk_label}
+                        </span>
+                        ) : '—'}
+                    </td>
+                    </tr>
                 ))}
-            </tbody>
+                </tbody>
             </table>
         </div>
     </div>
