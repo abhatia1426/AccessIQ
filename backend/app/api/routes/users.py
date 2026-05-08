@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
+from sqlalchemy import select, text
 from typing import Optional
 
 from app.db.session import get_db
@@ -10,7 +10,7 @@ from app.schemas.schemas import UserOut, RiskScoreOut
 
 router = APIRouter(prefix="/users", tags=["users"])
 
-@router.get("/{org_slug}", response_model=list[UserOut])
+@router.get("/{org_slug}")
 async def list_users(
     org_slug: str,
     department: Optional[str] = Query(None),
@@ -49,20 +49,20 @@ async def list_users(
         )
 
     result = await db.execute(text(query), {"org_id": org.id})
-    return result.fetchall()
+    rows = result.fetchall()
 
     return [
         {
-            "id": str(r.id),
-            "email": r.email,
-            "full_name": r.full_name,
-            "department": r.department,
-            "job_title": r.job_title,
-            "employee_type": r.employee_type,
-            "is_active": r.is_active,
-            "overall_score": float(r.overall_score) if r.overall_score else None,
-            "sod_violation_count": r.sod_violation_count or 0,
-            "risk_label": r.risk_label,
+            "id": str(r[0]),
+            "email": r[1],
+            "full_name": r[2],
+            "department": r[3],
+            "job_title": r[4],
+            "employee_type": r[5],
+            "is_active": bool(r[6]),
+            "overall_score": float(r[7]) if r[7] else None,
+            "sod_violation_count": r[8] or 0,
+            "risk_label": r[9],
         }
         for r in rows
     ]

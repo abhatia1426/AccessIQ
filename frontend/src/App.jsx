@@ -9,9 +9,9 @@ const ORG_SLUG = 'acme-corp'
 export default function App() {
   return (
     <BrowserRouter>
-      <div style={{ minHeight: '100vh', background: 'var(--color-background-tertiary)' }}>
+      <div style={{ minHeight: '100vh', background: '#0f0f0f' }}>
         <Navbar orgSlug={ORG_SLUG} />
-        <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '24px 20px' }}>
+        <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '32px 24px' }}>
           <Routes>
             <Route path="/" element={<Navigate to="/dashboard" />} />
             <Route path="/dashboard" element={<Dashboard orgSlug={ORG_SLUG} />} />
